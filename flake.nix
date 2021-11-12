@@ -1,4 +1,5 @@
-description = "A bare-metal OS kernel for ARMv8 Raspberry Pi boards";
+{
+  description = "A bare-metal OS kernel for ARMv8 Raspberry Pi boards";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-21.05";
@@ -24,15 +25,15 @@ description = "A bare-metal OS kernel for ARMv8 Raspberry Pi boards";
         rustfilt = pkgs.rustPlatform.buildRustPackage rec {
           pname = "rustfilt";
           version = "0.2.1";
-          
-          src = fetchFromGitHub {
+
+          src = pkgs.fetchFromGitHub {
             owner = "luser";
             repo = pname;
             rev = version;
-            sha256 = lib.fakeSha256;
+            sha256 = "sha256-zb1tkeWmeMq7aM8hWssS/UpvGzGbfsaVYCOKBnAKwiQ=";
           };
-          
-          cargoSha256 = lib.fakeSha256;
+
+          cargoSha256 = "sha256-rs2EWcvTxLVeJ0t+jLM75s+K72t+hqKzwy3oAdCZ8BE=";
         };
 
       in
@@ -46,3 +47,4 @@ description = "A bare-metal OS kernel for ARMv8 Raspberry Pi boards";
           };
         }
     );
+}
